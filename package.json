@@ -1,0 +1,32 @@
+{
+    "name": "hina-language-support",
+    "displayName": "Hina Language Support",
+    "description": "basic support for the hina proggramming laguage, including sytax highlighting and icons",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.51.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+		"iconThemes": [
+			{
+				"id": "hina",
+				"label": "_hina",
+				"path": "./fileicons/hina-icon-theme.json"
+			}
+		],
+        "languages": [{
+            "id": "hina",
+            "aliases": ["Hina", "hina"],
+            "extensions": [".hina"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "hina",
+            "scopeName": "source.hina",
+            "path": "./syntaxes/hina.tmLanguage.json"
+        }]
+    }
+}

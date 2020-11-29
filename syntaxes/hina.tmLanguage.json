@@ -1,0 +1,50 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "hina",
+	"patterns": [
+		{ "include": "#keywords"},
+		{ "include": "#strings"},
+		{ "include": "#constants"},
+		{ "include": "#comment block"},
+		{ "include": "#comment"},
+		{ "include": "#functions"},
+		{ "include": "#variables"}
+	],
+	"repository": {
+		"keywords": {
+			"name": "keyword.control.hina",
+			"match": "\\b(if|while|for|return|until)\\b"
+		},
+		"constants":{
+			"name" : "keyword.other.hina",
+			"match": "\\b(true|false)\\b"
+		},
+		"strings": {
+			"name": "string.quoted.double.hina",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [{
+				"name": "constant.character.escape.hina",
+				"match": "\\."
+			}]
+		},
+		"comment block": {
+			"name": "comment.block.hina",
+			"begin": "/\\*",
+			"end": "\\*/"
+		},
+		"comment": {
+			"name": "comment.line.double-slash.hina",
+			"begin": "//",
+			"end": "\n"
+		},
+		"functions": {
+			"name": "entity.name.function.hina"
+		},
+		"variables": {
+			"name": "variable.hina",
+			"match": "[a-zA-Z][a-zA-Z0-9_]*"
+		}
+	},
+	"scopeName": "source.hina"
+}
