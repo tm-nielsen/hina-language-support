@@ -1,0 +1,76 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "hina",
+	"patterns": [
+		{ "include": "#keywords"},
+		{ "include": "#multilinestr"},
+		{ "include": "#strings"},
+		{ "include": "#constants"},
+		{ "include": "#comment block"},
+		{ "include": "#comment"},
+		{ "include": "#funcs" },
+		{ "include": "#variables"},
+		{ "include": "#scopes" },
+		{ "include": "#numbers" }
+	],
+	"repository": {
+		"funcs": {
+			"begin": "([a-zA-Z][a-zA-Z0-9_]*)\\s*\\(",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function"
+				}
+			},
+		},
+		"scopes": {
+			"name": "variable.language",
+			"match": "=>"
+		},
+		"numbers": {
+			"name":"constant.numeric",
+			"match": "[0-9]+(\\.[0-9]+)?"
+		},
+		"keywords": {
+			"name": "keyword.control.hina",
+			"match": "\\b(if|while|for|in|return|with|from|by|else|try)\\b"
+		},
+		"constants":{
+			"name" : "keyword.other.hina",
+			"match": "\\b(true|false|let)\\b"
+		},
+		"strings": {
+			"name": "string.quoted.double.hina",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [{
+				"name": "constant.character.escape.hina",
+				"match": "\\\\."
+			}]
+		},
+		"multilinestr": {
+			"name": "string.quoted.double.hina",
+			"begin": "\\$",
+			"end": "\\$",
+			"patterns": [{
+				"name": "constant.character.escape.hina",
+				"match": "\\\\\\$"
+			}]
+		},
+		"comment block": {
+			"name": "comment.block.hina",
+			"begin": "/\\*",
+			"end": "\\*/"
+		},
+		"comment": {
+			"name": "comment.line.double-slash.hina",
+			"begin": "//",
+			"end": "\n"
+		},
+		"variables": {
+			"name": "todo.hina",
+			"match": "[a-zA-Z][a-zA-Z0-9_]*"
+		}
+	},
+	"scopeName": "source.hina"
+}

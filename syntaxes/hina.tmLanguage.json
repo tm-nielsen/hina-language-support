@@ -2,22 +2,78 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "hina",
 	"patterns": [
-		{ "include": "#keywords"},
-		{ "include": "#strings"},
-		{ "include": "#constants"},
-		{ "include": "#comment block"},
-		{ "include": "#comment"},
-		{ "include": "#functions"},
-		{ "include": "#variables"}
+		{ "include": "#scope" }
 	],
 	"repository": {
+		"scope": {
+			"patterns": [
+				{ "include": "#funccall" },
+				{ "include": "#letstmt" },
+				{ "include": "#funcargs" },
+				{ "include": "#keywords"},
+				{ "include": "#multilinestr"},
+				{ "include": "#strings"},
+				{ "include": "#constants"},
+				{ "include": "#comment block"},
+				{ "include": "#comment"},
+				{ "include": "#funcs" },
+				{ "include": "#numbers" }
+			]
+		},
+		"funccall": {
+			"begin": "([a-zA-Z_][a-zA-Z0-9_]*)\\(",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function"
+				}
+			},
+			"patterns": [
+				{ "include": "#scope" }
+			]
+		},
+		"letstmt": {
+			"begin": "(let)\\s([a-zA-Z_][a-zA-Z0-9_]*)",
+			"end": "=|;",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.other"
+				},
+				"2": {
+					"name": "variable.parameter"
+				}
+			},
+			"patterns": [
+				{ "include": "#funcarg" }
+			]
+		},
+		"funcargs": {
+			"begin": "\\(([a-zA-Z_][a-zA-Z0-9_]*)\\s*",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": {
+					"name": "variable.parameter"
+				}
+			},
+			"patterns": [
+				{ "include": "#funcarg" }
+			]
+		},
+		"funcarg": {
+			"match": "[a-zA-Z_][a-zA-Z0-9_]*",
+			"name": "variable.parameter"
+		},
+		"numbers": {
+			"name":"constant.numeric",
+			"match": "[0-9]+(\\.[0-9]+)?"
+		},
 		"keywords": {
 			"name": "keyword.control.hina",
-			"match": "\\b(if|while|for|return|until)\\b"
+			"match": "\\b(if|while|for|in|return|with|from|by|else|try)\\b"
 		},
 		"constants":{
 			"name" : "keyword.other.hina",
-			"match": "\\b(true|false)\\b"
+			"match": "(\\b(true|false|let)\\b)|=>|:=>"
 		},
 		"strings": {
 			"name": "string.quoted.double.hina",
@@ -25,7 +81,16 @@
 			"end": "\"",
 			"patterns": [{
 				"name": "constant.character.escape.hina",
-				"match": "\\."
+				"match": "\\\\."
+			}]
+		},
+		"multilinestr": {
+			"name": "string.quoted.double.hina",
+			"begin": "\\$",
+			"end": "\\$",
+			"patterns": [{
+				"name": "constant.character.escape.hina",
+				"match": "\\\\\\$"
 			}]
 		},
 		"comment block": {
@@ -37,13 +102,6 @@
 			"name": "comment.line.double-slash.hina",
 			"begin": "//",
 			"end": "\n"
-		},
-		"functions": {
-			"name": "entity.name.function.hina"
-		},
-		"variables": {
-			"name": "variable.hina",
-			"match": "[a-zA-Z][a-zA-Z0-9_]*"
 		}
 	},
 	"scopeName": "source.hina"
