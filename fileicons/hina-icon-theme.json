@@ -1412,6 +1412,10 @@
             "_hina":{
                 "fontCharacter": "ha",
                 "fontColor": "#ffe779",
+            },
+            "_jammy":{
+                "fontCharacter": "\\E09F",
+                "fontColor": "#31d2ee",
             }
         },
         "file": "_default",
@@ -1629,7 +1633,8 @@
             "key": "_lock",
             "cert": "_lock",
             "ds_store": "_ignored",
-            "hina" : "_hina"
+            "hina" : "_hina",
+            "jam" : "_jammy"
         },
         "fileNames": {
             "mix": "_hex",
@@ -1754,7 +1759,8 @@
             "todo": "_todo",
             "postcss": "_css",
             "django-html": "_html_3",
-            "hina": "_hina"
+            "hina": "_hina",
+            "jam" : "_jammy"
         },
         "light": {
             "file": "_default_light",
@@ -2038,7 +2044,8 @@
                 "vala": "_vala_light",
                 "postcss": "_css_light",
                 "django-html": "_html_3_light",
-                "hina" : "_hina"
+                "hina" : "_hina",
+                "jam" : "_jammy"
             },
             "fileNames": {
                 "mix": "_hex_light",
