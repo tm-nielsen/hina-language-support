@@ -1,0 +1,45 @@
+
+{
+    "Use Statement": {
+        "prefix": [ "use" ],
+        "body": [ "use \"std/${1|array,iter,map,set,string,table,types|}.jam\";$0" ]
+    },
+
+    "If": {
+        "prefix": [ "if" ],
+        "body": [ "if $1, $0" ]
+    },
+
+    "If-Else": {
+        "prefix": [ "if" ],
+        "body": [ "if $1, $2 else $0" ]
+    },
+
+    "For Loop": {
+        "prefix": [ "for" ],
+        "body": [ "for $1 in $2, $0" ]
+    },
+
+    "While Loop": {
+        "prefix": [ "while" ],
+        "body": [ "while $1, $0" ]
+    },
+
+    "Try": {
+        "prefix": [ "try" ],
+        "body": [ "try $1 else $0" ]
+    },
+
+    "Function": {
+        "prefix": [ "fn" ],
+        "body": [ "($1) => $0"],
+        "description": "A function"
+    },
+
+    "Method": {
+        "prefix": [ "mt" ],
+        "body": [ "($1) [$2] :=> $0"],
+        "description": "A self-function"
+    }
+}
+

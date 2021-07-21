@@ -1,7 +1,7 @@
 {
-    "name": "hina-language-support",
-    "displayName": "Hina Language Support",
-    "description": "basic support for the hina proggramming laguage, including sytax highlighting and icons",
+    "name": "jammy-language-support",
+    "displayName": "Jammy Language Support",
+    "description": "Basic support for the Jammy programming laguage, including sytax highlighting and icons",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.51.0"
@@ -17,16 +17,26 @@
 				"path": "./fileicons/hina-icon-theme.json"
 			}
 		],
-        "languages": [{
-            "id": "hina",
-            "aliases": ["Hina", "hina"],
-            "extensions": [".hina"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "hina",
-            "scopeName": "source.hina",
-            "path": "./syntaxes/hina.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "jammy",
+                "aliases": [ "Jammy", "jammy"],
+                "extensions": [ ".jam" ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "jammy",
+                "scopeName": "source.jammy",
+                "path": "./syntaxes/jammy.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+              "language": "jammy",
+              "path": "./snippets.json"
+            }
+        ]
     }
 }
