@@ -164,7 +164,7 @@
 		},
 		"keywords": {
 			"name": "keyword.control.jammy",
-			"match": "\\b(if|while|for|in|return|with|else|try|match|break|continue|use|len|print)\\b"
+			"match": "\\b(export|if|while|for|in|return|with|else|try|match|break|continue|use|len|print)\\b"
 		},
 		"constants":{
 			"name" : "keyword.other.jammy",
@@ -199,12 +199,22 @@
 		},
 		"comment block": {
 			"name": "comment.block.jammy",
-			"begin": "/\\*",
-			"end": "\\*/"
+			"begin": "\\-\\-\\[",
+			"end": "\\]",
+			"patterns": [
+				{
+					"include": "#comment block"
+				},
+				{
+					"begin": "\\[",
+					"end": "\\]",
+					"name": "comment.block.jammy"
+				}
+			]
 		},
 		"comment": {
 			"name": "comment.line.double-slash.jammy",
-			"begin": "//",
+			"begin": "\\-\\-",
 			"end": "\n"
 		}
 	},
