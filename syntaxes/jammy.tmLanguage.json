@@ -2,26 +2,64 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "jammy",
 	"patterns": [
-		{ "include": "#scope" }
+		{
+			"include": "#scope"
+		}
 	],
 	"repository": {
 		"scope": {
 			"patterns": [
-				{ "include": "#letstmt" },
-				{ "include": "#keywords"},
-				{ "include": "#selftype" },
-				{ "include": "#functypes" },
-				{ "include": "#classdef" },
-				{ "include": "#funccall_excl" },
-				{ "include": "#funccall" },
-				{ "include": "#members" },
-				{ "include": "#strings"},
-				{ "include": "#constants"},
-				{ "include": "#comment block"},
-				{ "include": "#comment"},
-				{ "include": "#funcs" },
-				{ "include": "#numbers" },
-				{ "include": "#objindex" }
+				{
+					"include": "#letstmt"
+				},
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#selftype"
+				},
+				{
+					"include": "#functypes"
+				},
+				{
+					"include": "#classdef"
+				},
+				{
+					"include": "#funccall_excl"
+				},
+				{
+					"include": "#funccall"
+				},
+				{
+					"include": "#members"
+				},
+				{
+					"include": "#self"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#constants"
+				},
+				{
+					"include": "#comment block"
+				},
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#funcs"
+				},
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#objindex"
+				},
+				{
+					"include": "#arrayindex"
+				}
 			]
 		},
 		"coolfunccall": {
@@ -81,6 +119,10 @@
 			"match": "(@)([a-zA-Z_][a-zA-Z0-9_]*)",
 			"name": "variable.other.constant"
 		},
+		"self": {
+			"match": "@",
+			"name": "variable.other.constant"
+		},
 		"stringformat": {
 			"begin": "(\\$\\{)",
 			"end": "(})",
@@ -95,7 +137,9 @@
 				}
 			},
 			"patterns": [
-				{ "include": "#scope" }
+				{
+					"include": "#scope"
+				}
 			]
 		},
 		"funccall_excl": {
@@ -115,7 +159,9 @@
 				}
 			},
 			"patterns": [
-				{ "include": "#scope" }
+				{
+					"include": "#scope"
+				}
 			]
 		},
 		"letstmt": {
@@ -130,7 +176,9 @@
 				}
 			},
 			"patterns": [
-				{ "include": "#funcarg" }
+				{
+					"include": "#funcarg"
+				}
 			]
 		},
 		"funcargs": {
@@ -142,8 +190,12 @@
 				}
 			},
 			"patterns": [
-				{ "include": "#funcarg" },
-				{ "include": "#scope" }
+				{
+					"include": "#funcarg"
+				},
+				{
+					"include": "#scope"
+				}
 			]
 		},
 		"funcarg": {
@@ -158,16 +210,20 @@
 				}
 			}
 		},
+		"arrayindex": {
+			"match": "(#)([a-zA-Z_][a-zA-Z0-9_]*)",
+			"name": "variable.parameter"
+		},
 		"numbers": {
-			"name":"constant.numeric",
+			"name": "constant.numeric",
 			"match": "[0-9]+(\\.[0-9]+)?"
 		},
 		"keywords": {
 			"name": "keyword.control.jammy",
 			"match": "\\b(export|if|while|for|in|return|with|else|try|match|break|continue|use|len|print)\\b"
 		},
-		"constants":{
-			"name" : "keyword.other.jammy",
+		"constants": {
+			"name": "keyword.other.jammy",
 			"match": "(\\b(true|false|let|my|self|nil|@|super)\\b)|=>|:=>"
 		},
 		"strings": {
@@ -191,7 +247,7 @@
 					"name": "constant.character.escape.jammy",
 					"match": "\\\\."
 				},
-				{ 
+				{
 					"name": "string.quoted.double.jammy",
 					"match": "."
 				}
